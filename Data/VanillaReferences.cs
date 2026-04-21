@@ -33,15 +33,6 @@ public class VanillaReferences
     private static tk2dSpriteAnimation? CloaklessLibrary;
     private static tk2dSpriteAnimation? WandererLibrary;
 
-    private static AudioClip? HunterAudio;
-    private static AudioClip? BeastAudio;
-    private static AudioClip? ReaperAudio;
-    private static AudioClip? WitchAudio;
-    private static AudioClip? ShamanAudio;
-    private static AudioClip? ArchitectAudio;
-    private static AudioClip? CloaklessAudio;
-    private static AudioClip? WandererAudio;
-
     internal static void InitialiseReferences()
     {
         HunterLibrary = InitLibraryForCrestType(AnimationLibraryNames.DEFAULT);

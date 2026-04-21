@@ -168,6 +168,7 @@ public static class VanillaAttacks
     }
 
     #pragma warning disable CS1591 // Missing XML comment
+    //All of the following classs are generated using the LogAttackInfo method in the AmalgamCrest
     public static class Hunter
     {
         //Guideline to help with pasting

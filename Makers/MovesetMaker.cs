@@ -30,7 +30,7 @@ internal class MovesetMaker
 
         // In case of vanilla options
         #region Charged slash
-        GameObject? Charged_Slash = AttackOrDefault(moveset.ChargedSlash, hunter.ChargeSlash);
+        GameObject? Charged_Slash = null;
 
         if (moveset.UseVanillaChargedSlash != null)
         {
@@ -45,6 +45,9 @@ internal class MovesetMaker
                 Charged_Slash = clonedChargedAttack.CreateGameObject(root, hc);
             }
         }
+
+        if (Charged_Slash == null)
+            Charged_Slash = AttackOrDefault(moveset.ChargedSlash, hunter.ChargeSlash);
         #endregion
 
         #region Downslash and Alt
