@@ -1,4 +1,5 @@
 ﻿using HarmonyLib;
+using Needleforge.Data;
 using Needleforge.Makers;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,8 @@ internal static class AddMovesetsAndAnims
     [HarmonyPostfix]
     private static void InitMovesets(HeroController __instance)
     {
+        ModHelper.Log("Fetching animation library references...");
+        VanillaReferences.InitialiseReferences();
         ModHelper.Log("Initializing Crest Movesets...");
         foreach (var crest in NeedleforgePlugin.newCrestData)
         {

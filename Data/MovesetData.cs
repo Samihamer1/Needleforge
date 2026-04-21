@@ -140,6 +140,26 @@ public class MovesetData
     private DownAttack? _downSlash;
 
     /// <summary>
+    /// When a certain vanilla down slash is desired, this property acts as an alternative
+    /// to <see cref="DownSlash"/>.
+    /// This will overwrite the behaviour defined in <see cref="DownSlash"/>.
+    /// Optional.
+    /// <para>Note that this only refers to downslashes with custom behaviour.
+    /// Valid options are WITCH, REAPER, SHAMAN, ARCHITECT, BEAST.
+    /// Required animations will be automatically cloned, but if desired, 
+    /// custom (non-looping) animations can be set under the following names.
+    /// Animations that require a trigger will be marked with a T:</para>
+    /// <para>When using BEAST, required animations are "SpinBall Antic", "SpinBall Launch",
+    /// "SpinBall", "SpinBall Grind", "SpinBall Rebound".</para>
+    /// <para>When using REAPER, required animations are "v3 Down Slash Antic", T:"v3 Down Slash".</para>
+    /// <para>When using SHAMAN, the required animation is T:"DownSlash".</para>
+    /// <para>When using WITCH, the required animations are "DownSpike", "DownSpike Antic", "Downspike Followup".</para>
+    /// <para>When using ARCHITECT, the required animations are T:"DownSpike Charge", "DownSpike Antic", 
+    /// "DownSpike", "DownSpike Charged", "Drill Grind", "Drill Grind Charged".</para>
+    /// </summary>
+    public VanillaAttackType? UseVanillaDownSlash { get; set; } = null;
+
+    /// <summary>
     /// Defines the visual, auditory and damage properties of the dash attack.
     /// </summary>
     /// <remarks>
@@ -166,6 +186,32 @@ public class MovesetData
         }
     }
     private DashAttack? _dashSlash;
+    /// <summary>
+    /// When a certain vanilla dash slash is desired, this property acts as an alternative
+    /// to <see cref="DashSlash"/>.
+    /// This will overwrite the behaviour defined in <see cref="DashSlash"/>.
+    /// Optional.
+    /// <para>Hunter will have its Attack Steps forced to 1, and Witch will
+    /// have its forced to 2. To get around this, consider using <see cref="DashSlash"/> instead.</para>
+    /// <para>Note that when using Witch, the object stored in <see cref="ConfigGroup.DashStab"/>
+    /// is the parent object containing "Dash Slash 1" and "Dash Slash 2". In all other cases,
+    /// <see cref="ConfigGroup.DashStab"/> is the standard slash, and <see cref="ConfigGroup.DashStabAlt"/>
+    /// is a variant slash, such as Wanderer's alternate or Architect's charged.</para>
+    /// <para>Required animations will be automatically cloned, but if desired, 
+    /// custom (non-looping) animations can be set under the following names.
+    /// Animations that require a trigger will be marked with a T:</para>
+    /// <para>When using REAPER, required animations are "Dash Upper Antic", "Dash Upper",
+    /// "Dash Upper Recovery"</para>
+    /// <para>When using WANDERER, required animations are T:"Wanderer Dash Attack",
+    /// T:"Wanderer Dash Attack Alt", T:"Wanderer DashRecoil", "Wanderer RecoilStab"</para>
+    /// <para>When using BEAST or SHAMAN, required animations are "Dash Attack Antic", 
+    /// "Dash Attack Leap", "Dash Attack Slash"</para>
+    /// <para>When using ARCHITECT, required animations are T:"Dash Attack Charge", 
+    /// "Dash Attack"</para>
+    /// <para>When using WITCH, required animations are "Dash Attack Antic 1", "Dash Attack 1",
+    /// "Dash Attack Recover", "Dash Attack Antic 2", "Dash Attack 2"</para>
+    /// </summary>
+    public VanillaAttackType? UseVanillaDashSlash { get; set; } = null;
 
     /// <summary>
     /// Defines the visual, auditory and damage properties of the charged attack,
@@ -200,6 +246,15 @@ public class MovesetData
     private ChargedAttack? _chargedSlash;
 
     /// <summary>
+    /// When a vanilla charged slash is desired, this property acts as an alternative 
+    /// to setting up a custom one with <see cref="ChargedSlash"/>.
+    /// This will overwrite the behaviour defined in <see cref="ChargedSlash"/>.
+    /// Optional.
+    /// <para>Cloakless does not have a charged slash, so it has no effect when set as this field.</para>
+    /// </summary>
+    public VanillaAttackType? UseVanillaChargedSlash { get; set; } = null;
+
+    /// <summary>
     /// Defines the visual, auditory, and damage properties of the alternate side attack,
     /// which is used when the player attacks multiple times in quick succession.
     /// Optional.
@@ -208,6 +263,7 @@ public class MovesetData
     /// The corresponding <see cref="HeroControllerConfig.heroAnimOverrideLib"/> animation
     /// is "SlashAlt"
     /// </remarks>
+
     public Attack? AltSlash
     {
         get => _slashAlt;
