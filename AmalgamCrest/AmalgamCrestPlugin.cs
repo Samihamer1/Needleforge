@@ -91,9 +91,9 @@ public partial class AmalgamCrestPlugin : BaseUnityPlugin
 
         amalgamCrest.Moveset.UseVanillaDownSlash = VanillaAttackType.SHAMAN;
 
-        //By the way, I'm not doing it here, but if you wanted to clone hunter's downslash,
-        //You can just leave both UseVanillaDownSlash and DownSlash unset.
-        //It'll default to hunter, so you only need to set downspike properties in heroconfig.
+        //By the way, I'm not doing it here, but if you wanted to clone hunter's or cloakless' downslash,
+        //You can just use UseVanillaDownSlash. Set the downspike config like in ExampleCrest, 
+        //and it should be good.
 
         // For this, we're skipping the usual process of creating animations since we're 
         // only using vanilla slashes. 

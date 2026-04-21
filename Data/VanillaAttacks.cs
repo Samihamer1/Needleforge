@@ -113,6 +113,10 @@ public static class VanillaAttacks
                 case VanillaAttackType.ARCHITECT:
                     return new VanillaAttackObjects(attacks.transform.Find("Toolmaster").Find("DownSlash New").gameObject,
                         attacks.transform.Find("Toolmaster").Find("DownSlash New Charged").gameObject);
+                case VanillaAttackType.HUNTER:
+                    return new VanillaAttackObjects(attacks.transform.Find("Default").Find("DownSlash").gameObject);
+                case VanillaAttackType.CLOAKLESS:
+                    return new VanillaAttackObjects(attacks.transform.Find("Cloakless").Find("DownKick").gameObject);
             }
 
             ModHelper.LogError($"Could not find a down slash for crest type {crest}. Returning null.");
@@ -168,6 +172,7 @@ public static class VanillaAttacks
     }
 
     #pragma warning disable CS1591 // Missing XML comment
+    //All of the following classs are generated using the LogAttackInfo method in the AmalgamCrest
     public static class Hunter
     {
         //Guideline to help with pasting

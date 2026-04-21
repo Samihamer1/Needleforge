@@ -13,7 +13,7 @@ internal static class AddMovesetsAndAnims
     [HarmonyPostfix]
     private static void InitMovesets(HeroController __instance)
     {
-        ModHelper.Log("Fetching animation library references...");
+        ModHelper.Log("Fetching vanilla references...");
         VanillaReferences.InitialiseReferences();
         ModHelper.Log("Initializing Crest Movesets...");
         foreach (var crest in NeedleforgePlugin.newCrestData)

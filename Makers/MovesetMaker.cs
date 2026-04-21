@@ -30,7 +30,7 @@ internal class MovesetMaker
 
         // In case of vanilla options
         #region Charged slash
-        GameObject? Charged_Slash = AttackOrDefault(moveset.ChargedSlash, hunter.ChargeSlash);
+        GameObject? Charged_Slash = null;
 
         if (moveset.UseVanillaChargedSlash != null)
         {
@@ -45,6 +45,9 @@ internal class MovesetMaker
                 Charged_Slash = clonedChargedAttack.CreateGameObject(root, hc);
             }
         }
+
+        if (Charged_Slash == null)
+            Charged_Slash = AttackOrDefault(moveset.ChargedSlash, hunter.ChargeSlash);
         #endregion
 
         #region Downslash and Alt
@@ -111,7 +114,10 @@ internal class MovesetMaker
                 moveset.HeroConfig.downSlashType = HeroControllerConfig.DownSlashTypes.Custom;
                 moveset.HeroConfig.downSlashEvent = "TOOLMASTER DOWNSLASH";
                 break;
-            case VanillaAttackType.HUNTER: case VanillaAttackType.WANDERER: case VanillaAttackType.CLOAKLESS:
+            case VanillaAttackType.HUNTER: case VanillaAttackType.CLOAKLESS:
+                moveset.HeroConfig.downSlashType = HeroControllerConfig.DownSlashTypes.DownSpike;
+                break;
+            case VanillaAttackType.WANDERER:
                 ModHelper.LogWarning($"Crest {moveset.Crest.name} is requesting use of a DownSlash type" +
                     $" {moveset.UseVanillaDownSlash}, which has no unique downslash." + 
                     " Check the VanillaAttacks class for the right DownAttack prefab.");
